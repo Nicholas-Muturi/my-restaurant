@@ -10,15 +10,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
-    private Button btnfindRestaurantsButton;
-    private EditText etLocation;
+    @BindView(R.id.locationEditText) EditText etLocation;
+    @BindView(R.id.findRestaurantsButton) Button btnfindRestaurantsButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        etLocation = findViewById(R.id.locationEditText);
-        btnfindRestaurantsButton = findViewById(R.id.findRestaurantsButton);
+        ButterKnife.bind(this);
+
         btnfindRestaurantsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
