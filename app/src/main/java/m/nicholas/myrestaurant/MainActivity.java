@@ -13,7 +13,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     @BindView(R.id.locationEditText) EditText etLocation;
     @BindView(R.id.findRestaurantsButton) Button btnfindRestaurantsButton;
 
@@ -23,18 +23,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        btnfindRestaurantsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this,RestaurantActivity.class);
-//                startActivity(intent);
-                String location = etLocation.getText().toString();
-                etLocation.setText("");
-                Intent intent = new Intent(MainActivity.this, RestaurantActivity.class);
-                intent.putExtra("location",location);
-                startActivity(intent);
-        }
-        });
+        btnfindRestaurantsButton.setOnClickListener(this);
+    }
 
+    @Override
+    public void onClick(View view) {
+        if(view == btnfindRestaurantsButton){
+            String location = etLocation.getText().toString();
+            etLocation.setText("");
+            Intent intent = new Intent(MainActivity.this, RestaurantActivity.class);
+            intent.putExtra("location",location);
+            startActivity(intent);
+        }
     }
 }
