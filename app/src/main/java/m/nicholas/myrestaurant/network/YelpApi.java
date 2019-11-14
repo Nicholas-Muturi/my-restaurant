@@ -1,4 +1,4 @@
-package m.nicholas.myrestaurant.interfaces;
+package m.nicholas.myrestaurant.network;
 
 import m.nicholas.myrestaurant.models.YelpBusinessesSearchResponse;
 import retrofit2.Call;

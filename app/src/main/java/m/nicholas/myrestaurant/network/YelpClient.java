@@ -1,8 +1,8 @@
-package m.nicholas.myrestaurant;
+package m.nicholas.myrestaurant.network;
 
 import java.io.IOException;
 
-import m.nicholas.myrestaurant.interfaces.YelpApi;
+import m.nicholas.myrestaurant.network.YelpApi;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
