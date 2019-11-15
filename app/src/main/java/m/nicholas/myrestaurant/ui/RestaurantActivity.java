@@ -7,6 +7,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -49,10 +50,11 @@ public class RestaurantActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     List<Business> restaurantList = response.body().getBusinesses();
 
-                    mAdapter = new RestaurantListAdapter(RestaurantActivity.this,restaurantList);
+                    mAdapter = new RestaurantListAdapter(RestaurantActivity.this, restaurantList);
                     mRecyclerView.setAdapter(mAdapter);
                     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RestaurantActivity.this);
-
+                    DividerItemDecoration itemDecor = new DividerItemDecoration(mRecyclerView.getContext(),DividerItemDecoration.VERTICAL);
+                    mRecyclerView.addItemDecoration(itemDecor);
                     mRecyclerView.setLayoutManager(layoutManager);
                     mRecyclerView.setHasFixedSize(true);
 
