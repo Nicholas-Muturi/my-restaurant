@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
         btnfindRestaurantsButton.setOnClickListener(this);
     }
 
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(view == btnfindRestaurantsButton){
             String location = etLocation.getText().toString();
             etLocation.setText("");
-            Intent intent = new Intent(MainActivity.this, RestaurantActivity.class);
+            Intent intent = new Intent(MainActivity.this, RestaurantListActivity.class);
             intent.putExtra("location",location);
             startActivity(intent);
         }

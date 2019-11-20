@@ -1,6 +1,8 @@
 package m.nicholas.myrestaurant.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcel;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +15,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import org.parceler.Parcels;
+
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import m.nicholas.myrestaurant.R;
 import m.nicholas.myrestaurant.models.Business;
+import m.nicholas.myrestaurant.ui.RestaurantDetailActivity;
 
 public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAdapter.RestaurantViewHolder> {
 
@@ -71,7 +76,11 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
 
         @Override
         public void onClick(View view) {
-            Toast.makeText(view.getContext(),mRestaurants.get(getAdapterPosition()).getName(),Toast.LENGTH_SHORT).show();
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, RestaurantDetailActivity.class);
+            intent.putExtra("position",itemPosition);
+            intent.putExtra("restaurants", Parcels.wrap(mRestaurants));
+            mContext.startActivity(intent);
         }
     }
 }

@@ -2,7 +2,6 @@ package m.nicholas.myrestaurant.network;
 
 import java.io.IOException;
 
-import m.nicholas.myrestaurant.network.YelpApi;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -15,7 +14,7 @@ import static m.nicholas.myrestaurant.Constants.YELP_BASE_URL;
 
 public class YelpClient {
     private static Retrofit retrofit = null;
-    public static YelpApi getClient(){
+    public static  YelpApi getClient(){
         if(retrofit == null){
             OkHttpClient okHttpClient = new OkHttpClient.Builder()
                     .addInterceptor(new Interceptor() {

@@ -7,6 +7,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,10 +27,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 @SuppressWarnings("ALL")
-public class RestaurantActivity extends AppCompatActivity {
+public class RestaurantListActivity extends AppCompatActivity {
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
     @BindView(R.id.errorTextView) TextView mErrorTextView;
+    @BindView(R.id.toolbar) Toolbar toolbar;
     private RestaurantListAdapter mAdapter;
 
     @Override
@@ -37,7 +39,8 @@ public class RestaurantActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant);
         ButterKnife.bind(this);
-
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
         String passedLocation = intent.getStringExtra("location");
 
@@ -49,10 +52,9 @@ public class RestaurantActivity extends AppCompatActivity {
                 hideProgressBar();
                 if(response.isSuccessful()){
                     List<Business> restaurantList = response.body().getBusinesses();
-
-                    mAdapter = new RestaurantListAdapter(RestaurantActivity.this, restaurantList);
+                    mAdapter = new RestaurantListAdapter(RestaurantListActivity.this, restaurantList);
                     mRecyclerView.setAdapter(mAdapter);
-                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RestaurantActivity.this);
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RestaurantListActivity.this);
                     DividerItemDecoration itemDecor = new DividerItemDecoration(mRecyclerView.getContext(),DividerItemDecoration.VERTICAL);
                     mRecyclerView.addItemDecoration(itemDecor);
                     mRecyclerView.setLayoutManager(layoutManager);

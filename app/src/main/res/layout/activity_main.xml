@@ -2,15 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="@color/colorDefaultBackground"
     android:layout_height="match_parent">
 
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/unsplash" />
+        android:layout_height="wrap_content"
+        android:layout_above="@id/textinputlayout"
+        android:layout_marginBottom="30dp"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/eating" />
 
     <TextView
         android:id="@+id/textView"
@@ -22,19 +25,27 @@
         android:fontFamily="@font/poppins"
         android:text="myRestaurant"
         android:textAlignment="center"
-        android:textColor="@color/colorTextIcons"
+        android:textColor="@color/colorTextBlack"
         android:textSize="40sp" />
 
-    <EditText
-        android:id="@+id/locationEditText"
-        android:layout_width="277dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textinputlayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:background="@color/colorTextIcons"
-        android:hint="Enter Zip Code"
-        android:padding="5dp" />
+        android:layout_marginBottom="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_above="@id/findRestaurantsButton"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:hint="Enter City or Town">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/locationEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:ems="10" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/findRestaurantsButton"
@@ -43,6 +54,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:background="@color/colorAccent"
+        android:textColor="@color/colorTextWhite"
         android:fontFamily="@font/poppins"
         android:text="Find Restaurants"
         android:textAlignment="center" />
